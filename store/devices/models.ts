@@ -4,13 +4,14 @@ export type DeviceVersion = {
 };
 
 export type Device = {
-  name: String;
-  brand: String;
-  codename: String;
+  name: string;
+  brand: string;
+  codename: string;
   supported_versions: Array<DeviceVersion>;
+  img: string;
 };
 
 export type BrandInfo = {
-  name: String;
+  name: string;
   devicesAmount: number;
 };
