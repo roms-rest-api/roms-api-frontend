@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import {
   Avatar,
-  Box,
   Grid,
   List,
   ListItem,
@@ -17,7 +16,7 @@ import { BrandInfo } from "../store/devices/models";
 
 const useStyles = makeStyles((theme) => ({
   title: {
-    margin: theme.spacing(4, 0, 2),
+    margin: theme.spacing(0, 0, 2),
   },
 }));
 
