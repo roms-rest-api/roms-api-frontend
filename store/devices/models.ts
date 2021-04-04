@@ -1,5 +1,5 @@
 export type DeviceVersion = {
-  version_code: boolean;
+  version_code: string;
   stable: boolean;
 };
 

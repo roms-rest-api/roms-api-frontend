@@ -16,13 +16,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { Device, DeviceVersion } from "../store/devices/models";
 import { useStore } from "../store/devices/store";
-
-type Build = {
-  changelog: string;
-  timestamp: number;
-  uploader_username: string;
-  link?: string;
-};
+import DeviceBuilds from "./builds";
 
 interface IDeviceInfoProps {
   device: Device;
@@ -40,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   media: {
-    width: 140,
+    width: 150,
   },
 
   accordionHeading: {
@@ -63,16 +57,23 @@ const DeviceInfo = (props: IDeviceInfoProps) => {
         <Typography variant="subtitle1" color="textSecondary">
           {props.device.codename}
         </Typography>
-        <Accordion>
-          {props.device.supported_versions.map((val: DeviceVersion) => (
+
+        {props.device.supported_versions.map((val: DeviceVersion) => (
+          <Accordion>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.accordionHeading}>
                 {val.version_code}
               </Typography>
             </AccordionSummary>
-          ))}
-          <AccordionDetails>Whats up</AccordionDetails>
-        </Accordion>
+            <AccordionDetails>
+              <DeviceBuilds
+                device={props.device}
+                versionCode={val.version_code}
+              />
+            </AccordionDetails>
+          </Accordion>
+        ))}
+
         <Box mt={2}>
           <Button
             startIcon={<KeyboardBackspaceIcon />}
