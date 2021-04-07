@@ -1,9 +1,10 @@
+import React from "react";
 import Head from "next/head";
 import RomAppBar from "../components/appbar";
 import BrandsList from "../components/brands";
 import DevicesList from "../components/devices";
 import DeviceInfo from "../components/device";
-import { Grid } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import styles from "../styles/Home.module.css";
 import { config } from "../config";
 import { useStore } from "../store/devices/store";
@@ -23,9 +24,11 @@ export default function Home() {
           <RomAppBar />
         </Grid>
         <Grid item>
-          <Grid container spacing={8} justify="center">
+          <Grid container justify="center">
             <Grid item xs={2}>
+              <Box mr={8}>
               <BrandsList />
+              </Box>
             </Grid>
             <Grid item xs={8}>
               {store.selectedDevice == null ? (

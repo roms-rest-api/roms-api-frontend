@@ -34,9 +34,10 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   media: {
-    width: 150,
+    marginTop: '10px',
+    width: 140,
+    height: 150,
   },
-
   accordionHeading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,

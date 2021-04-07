@@ -2,6 +2,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
+  Button,
   CircularProgress,
   Grid,
   makeStyles,
@@ -11,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
 import { Device } from "../store/devices/models";
 import { instance as api } from "../config";
+import '../styles/builds.module.css'
 
 interface IDeviceBuildsProps {
   device: Device;
@@ -30,7 +33,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
+  changelog: {
+    background: '#f0f0f0',
+    padding: "10px",
+    border: "1px solid black",
+    borderRadius: "5px"
+  }
 }));
+
+const getChangelogHtml = (changelog: string) => {
+  return `<div class="tl_article"><div class="tl_article_content">${changelog}</div></div>`
+}
 
 const DeviceBuilds = (props: IDeviceBuildsProps) => {
   const [builds, setBuilds] = React.useState([]);
@@ -86,6 +99,19 @@ const DeviceBuilds = (props: IDeviceBuildsProps) => {
                     <Typography>
                       <b>Version:</b> {props.versionCode}
                     </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography>
+                    <b>Changelog:</b>
+                    </Typography>
+                    <div className={classes.changelog} dangerouslySetInnerHTML={{ __html: getChangelogHtml(val.changelog)}} />
+                  </Grid>
+                  <Grid item>
+                    <Box mt={2}>
+                    <Button onClick={() => window.open(val.link)} variant="contained">
+                      Download build
+                    </Button>
+                    </Box>
                   </Grid>
                 </Grid>
               </AccordionDetails>
