@@ -15,14 +15,12 @@ import { useStore } from "../store/devices/store";
 import { BrandInfo } from "../store/devices/models";
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    margin: theme.spacing(0, 0, 2),
-  },
   grid: {
-    [theme.breakpoints.down('sm')]: {
-      margin: '20px'
-    }
-  }
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "20px",
+      paddingRight: "20px",
+    },
+  },
 }));
 
 const BrandsList = () => {
@@ -39,7 +37,7 @@ const BrandsList = () => {
 
   return (
     <Grid item className={classes.grid}>
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant="h6">
         Brands
       </Typography>
       <List>

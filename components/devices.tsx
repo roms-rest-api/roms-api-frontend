@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center'
+      justifyContent: 'center',
+      marginBottom: '20px'
     }
   }
 }));
