@@ -11,14 +11,19 @@ import React from "react";
 import { Device } from "../store/devices/models";
 import { useStore } from "../store/devices/store";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 250,
   },
   media: {
     height: 140,
   },
-});
+  gridContainer: {
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center'
+    }
+  }
+}));
 
 const DevicesList = () => {
   const store = useStore();
@@ -32,7 +37,7 @@ const DevicesList = () => {
     );
 
     return (
-      <Grid container direction="row" spacing={2}>
+      <Grid container direction="row" spacing={2} className={classes.gridContainer}>
         {devices.map((val: Device) => (
           <Grid item>
             <Card className={classes.root} onClick={() => store.setDevice(val)}>

@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(0, 0, 2),
   },
+  grid: {
+    [theme.breakpoints.down('sm')]: {
+      margin: '20px'
+    }
+  }
 }));
 
 const BrandsList = () => {
@@ -33,7 +38,7 @@ const BrandsList = () => {
   });
 
   return (
-    <Grid item>
+    <Grid item className={classes.grid}>
       <Typography variant="h6" className={classes.title}>
         Brands
       </Typography>

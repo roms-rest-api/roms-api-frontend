@@ -8,6 +8,7 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Hidden,
   makeStyles,
   Typography,
 } from "@material-ui/core";
@@ -24,7 +25,11 @@ interface IDeviceInfoProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    [theme.breakpoints.up("md")]: { display: "flex" }, /* Maybe do in other way */
+    [theme.breakpoints.down("sm")]: {
+      marginRight: '20px',
+      marginLeft: '20px'
+    }
   },
   details: {
     display: "flex",
@@ -34,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   media: {
-    marginTop: '10px',
+    marginTop: "10px",
     width: 140,
     height: 150,
   },
@@ -50,7 +55,9 @@ const DeviceInfo = (props: IDeviceInfoProps) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia className={classes.media} image={props.device.img} />
+      <Hidden smDown>
+        <CardMedia className={classes.media} image={props.device.img} />
+      </Hidden>
       <CardContent className={classes.content}>
         <Typography component="h5" variant="h5">
           {props.device.name}

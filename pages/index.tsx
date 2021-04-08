@@ -4,13 +4,23 @@ import RomAppBar from "../components/appbar";
 import BrandsList from "../components/brands";
 import DevicesList from "../components/devices";
 import DeviceInfo from "../components/device";
-import { Box, Grid } from "@material-ui/core";
+import { Box, Grid, makeStyles } from "@material-ui/core";
 import styles from "../styles/Home.module.css";
 import { config } from "../config";
 import { useStore } from "../store/devices/store";
 
+const useStyles = makeStyles((theme) => ({
+  brandsGrid: {
+    [theme.breakpoints.up('md')]: {
+      paddingRight: '32px'
+    }
+  }
+}));
+
+
 export default function Home() {
   const store = useStore();
+  const classes = useStyles();
 
   return (
     <div className={styles.root}>
@@ -20,37 +30,20 @@ export default function Home() {
       </Head>
 
       <main>
-        <Grid item>
-          <RomAppBar />
-        </Grid>
-        <Grid item>
-          <Grid container justify="center">
-            <Grid item xs={2}>
-              <Box mr={8}>
+        <RomAppBar />
+        <Grid container justify="center">
+          <Grid item xs={12} sm={12} md={2} lg={2} xl={2} className={classes.brandsGrid}>
               <BrandsList />
-              </Box>
-            </Grid>
-            <Grid item xs={8}>
-              {store.selectedDevice == null ? (
-                <DevicesList />
-              ) : (
-                <DeviceInfo device={store.selectedDevice} />
-              )}
-            </Grid>
+          </Grid>
+          <Grid item xl={8}>
+            {store.selectedDevice == null ? (
+              <DevicesList />
+            ) : (
+              <DeviceInfo device={store.selectedDevice} />
+            )}
           </Grid>
         </Grid>
       </main>
-
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer> */}
     </div>
   );
 }
