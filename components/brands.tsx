@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import {
   Avatar,
+  Button,
   Grid,
   List,
   ListItem,
@@ -17,9 +18,21 @@ import { BrandInfo } from "../store/devices/models";
 const useStyles = makeStyles((theme) => ({
   grid: {
     [theme.breakpoints.down("sm")]: {
-      paddingLeft: "20px",
-      paddingRight: "20px",
+      padding: '20px',
+      width: '100%'
     },
+  },
+  brandBtn: {
+    padding: "10px 70px",
+    textTransform: "none",
+    background: "#FAFEFF",
+    borderRadius: "30px",
+    [theme.breakpoints.down("sm")]: {
+      width: '100%'
+    }
+  },
+  title: {
+    marginBottom: "20px",
   },
 }));
 
@@ -37,28 +50,22 @@ const BrandsList = () => {
 
   return (
     <Grid item className={classes.grid}>
-      <Typography variant="h6">
+      <Typography variant="h6" className={classes.title}>
         Brands
       </Typography>
-      <List>
+      <Grid container direction="column" spacing={2}>
         {store.knownBrands.map((value: BrandInfo) => (
-          <ListItem button onClick={() => store.setBrand(value)}>
-            <ListItemAvatar>
-              <Avatar>
-                <PhoneAndroidIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={value.name}
-              secondary={
-                value.devicesAmount +
-                " device" +
-                (value.devicesAmount > 1 ? "s" : "")
-              }
-            />
-          </ListItem>
+          <Grid item>
+            <Button
+              variant="contained"
+              className={classes.brandBtn}
+              onClick={() => store.setBrand(value)}
+            >
+              {value.name}
+            </Button>
+          </Grid>
         ))}
-      </List>
+      </Grid>
     </Grid>
   );
 };

@@ -1,11 +1,14 @@
 import {
   AppBar,
+  Button,
   makeStyles,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import Link from "next/link";
 import { config } from "../config";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +16,24 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     paddingLeft: "32px",
+    display: "flex",
+    alignItems: "center",
+    flex: 1,
+  },
+  commonAppBar: {
+    color: "#EE0824",
+    fontFamily: "Inter",
+    fontWeight: "bold",
+  },
+  downloadsTitle: {
+    cursor: "pointer",
+    marginLeft: "2rem",
+    fontSize: "24px",
+  },
+  title: {
+    cursor: "pointer",
+    color: "#EE0824",
+    fontSize: "26px",
   },
 }));
 
@@ -23,7 +44,21 @@ const RomAppBar = () => {
     <div className={classes.root}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar variant="dense" className={classes.toolbar}>
-          <Typography variant="h6">{config.name}</Typography>
+          <Link href="/">
+            <Typography
+              variant="h6"
+              className={clsx(classes.commonAppBar, classes.title)}
+            >
+              {config.name}
+            </Typography>
+          </Link>
+          <Link href="/downloads">
+            <Typography
+              className={clsx(classes.commonAppBar, classes.downloadsTitle)}
+            >
+              Downloads
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

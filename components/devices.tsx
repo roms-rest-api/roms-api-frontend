@@ -14,12 +14,16 @@ import { useStore } from "../store/devices/store";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 250,
+    backgroundColor: '#154d6e'
+  },
+  deviceName: {
+    color: 'black'
   },
   media: {
     height: 140,
   },
   gridContainer: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       justifyContent: 'center',
       marginBottom: '20px'
     }
@@ -49,7 +53,7 @@ const DevicesList = () => {
                   title={val.name}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h5" component="h2" className={classes.deviceName}>
                     {val.name}
                   </Typography>
                   <Typography

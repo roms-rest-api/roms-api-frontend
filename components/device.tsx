@@ -25,12 +25,20 @@ interface IDeviceInfoProps {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    [theme.breakpoints.up("md")]: { display: "flex" }, /* Maybe do in other way */
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+      maxWidth: "1000px",
+    } /* Maybe do in other way */,
     [theme.breakpoints.down("sm")]: {
-      marginRight: '20px',
-      marginLeft: '20px'
+      marginRight: "20px",
+      marginLeft: "20px",
     },
-    marginBottom: '20px'
+    marginBottom: "20px",
+    background: "#480D15",
+    borderColor: "#EF0825",
+    border: "5px solid #EF0825",
+    padding: "5px",
+    borderRadius: "30px",
   },
   details: {
     display: "flex",
@@ -41,13 +49,22 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     marginTop: "10px",
+    marginLeft: "10px",
     width: 140,
     height: 150,
+    borderRadius: '10px'
   },
   accordionHeading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
   },
+  accordion: {
+    background: '#A1868A',
+    borderRadius: '30px'
+  },
+  whiteOverride: {
+    color: 'white'
+  }
 }));
 
 const DeviceInfo = (props: IDeviceInfoProps) => {
@@ -63,12 +80,12 @@ const DeviceInfo = (props: IDeviceInfoProps) => {
         <Typography component="h5" variant="h5">
           {props.device.name}
         </Typography>
-        <Typography variant="subtitle1" color="textSecondary">
+        <Typography variant="subtitle1" color="textSecondary" className={classes.whiteOverride}>
           {props.device.codename}
         </Typography>
 
         {props.device.supported_versions.map((val: DeviceVersion) => (
-          <Accordion>
+          <Accordion className={classes.accordion}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className={classes.accordionHeading}>
                 {val.version_code}
@@ -87,6 +104,7 @@ const DeviceInfo = (props: IDeviceInfoProps) => {
           <Button
             startIcon={<KeyboardBackspaceIcon />}
             onClick={() => store.setDevice(null)}
+            className={classes.whiteOverride}
           >
             Reselect device
           </Button>
