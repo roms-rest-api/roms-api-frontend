@@ -14,20 +14,24 @@ import { useStore } from "../store/devices/store";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 250,
-    backgroundColor: '#154d6e'
+    backgroundColor: "#154d6e",
   },
   deviceName: {
-    color: 'black'
+    color: "black",
   },
   media: {
     height: 140,
   },
   gridContainer: {
     [theme.breakpoints.down("sm")]: {
-      justifyContent: 'center',
-      marginBottom: '20px'
-    }
-  }
+      justifyContent: "center",
+      marginBottom: "20px",
+      paddingTop: "20px",
+    },
+  },
+  textWrapper: {
+    textAlign: "center",
+  },
 }));
 
 const DevicesList = () => {
@@ -35,14 +39,23 @@ const DevicesList = () => {
   const classes = useStyles();
 
   if (!store.selectedBrand) {
-    return <Typography variant="h5">Select brand to get started</Typography>;
+    return (
+      <div className={classes.textWrapper}>
+        <Typography variant="h5">Select brand to get started</Typography>
+      </div>
+    );
   } else {
     var devices: Device[] = store.devices.filter(
       (val) => val.brand == store.selectedBrand.name
     );
 
     return (
-      <Grid container direction="row" spacing={2} className={classes.gridContainer}>
+      <Grid
+        container
+        direction="row"
+        spacing={2}
+        className={classes.gridContainer}
+      >
         {devices.map((val: Device) => (
           <Grid item>
             <Card className={classes.root} onClick={() => store.setDevice(val)}>
@@ -53,7 +66,12 @@ const DevicesList = () => {
                   title={val.name}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2" className={classes.deviceName}>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    className={classes.deviceName}
+                  >
                     {val.name}
                   </Typography>
                   <Typography

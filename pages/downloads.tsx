@@ -12,10 +12,9 @@ import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   brandsGrid: {
-    [theme.breakpoints.up("sm")]: {
-      paddingRight: "32px",
-    },
+    paddingRight: "32px",
     [theme.breakpoints.down("sm")]: {
+      padding: 0,
       width: '100%'
     }
   },

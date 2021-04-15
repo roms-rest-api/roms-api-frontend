@@ -55,7 +55,7 @@ const BrandsList = () => {
       </Typography>
       <Grid container direction="column" spacing={2}>
         {store.knownBrands.map((value: BrandInfo) => (
-          <Grid item>
+          <Grid item key={value.name}>
             <Button
               variant="contained"
               className={classes.brandBtn}
