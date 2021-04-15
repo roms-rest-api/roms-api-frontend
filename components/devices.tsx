@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: "20px",
       paddingTop: "20px",
     },
+    "&.MuiGrid-spacing-xs-2": {
+      margin: "-16px", // TODO: why? It has width(100% + 16px) but margin -8px by default
+    },
   },
   textWrapper: {
     textAlign: "center",
@@ -79,7 +82,7 @@ const DevicesList = () => {
                     color="textSecondary"
                     component="p"
                   >
-                    Supported versions:{" "}
+                    Supported versions:
                     {val.supported_versions
                       .map((val) => val.version_code)
                       .join(", ")}
