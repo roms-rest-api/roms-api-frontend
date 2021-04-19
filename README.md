@@ -12,4 +12,20 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Deploy with Docker
+
+- Replace in docker-compose.yaml YOURDOMAIN with your domain and build then your docker image 
+
+<div class="termy">
+
+```console
+$ docker build . -t frontend
+
+$ docker-compose up -d
+
+```
+</div>
+
+
+
 You can edit most colors in `config.ts`, except background color, please do it in `styles/globals.css`
