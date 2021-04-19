@@ -18,6 +18,7 @@ import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { Device, DeviceVersion } from "../store/devices/models";
 import { useStore } from "../store/devices/store";
 import DeviceBuilds from "./builds";
+import { config } from "../config";
 
 interface IDeviceInfoProps {
   device: Device;
@@ -34,9 +35,8 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "20px",
     },
     marginBottom: "20px",
-    background: "#480D15",
-    borderColor: "#EF0825",
-    border: "5px solid #EF0825",
+    background: config.deviceBackgroundColor,
+    border: config.deviceBorderStyle,
     padding: "5px",
     borderRadius: "30px",
   },
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   accordion: {
-    background: '#A1868A',
+    background: config.deviceAccordionBackground,
     borderRadius: '30px'
   },
   whiteOverride: {

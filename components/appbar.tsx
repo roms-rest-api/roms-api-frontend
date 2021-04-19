@@ -1,6 +1,5 @@
 import {
   AppBar,
-  Button,
   makeStyles,
   Toolbar,
   Typography,
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   commonAppBar: {
-    color: "#EE0824",
+    color: config.titleFontColor,
     fontFamily: "Inter",
     fontWeight: "bold",
   },
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     cursor: "pointer",
-    color: "#EE0824",
+    color: config.titleFontColor,
     fontSize: "26px",
   },
 }));

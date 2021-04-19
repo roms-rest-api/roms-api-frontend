@@ -8,16 +8,17 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
+import { config } from "../config";
 import { Device } from "../store/devices/models";
 import { useStore } from "../store/devices/store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 250,
-    backgroundColor: "#154d6e",
+    backgroundColor: config.devicesBackgroundColor,
   },
   deviceName: {
-    color: "black",
+    color: config.devicesTitleColor,
   },
   media: {
     height: 140,
