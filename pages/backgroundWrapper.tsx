@@ -15,8 +15,8 @@ const BackgroundWrapper = (props) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <div className={classes.icons}>
+    <div>
+      <div>
         <CircleBottomLeft />
         <CircleTopRight />
       </div>

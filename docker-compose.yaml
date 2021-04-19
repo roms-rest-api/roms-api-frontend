@@ -1,0 +1,23 @@
+version: '3.3'
+networks:
+  web:
+   external: true
+services:
+    frontend:
+        image: frontend:latest
+        container_name: frontend
+        networks:
+          - web
+        labels:
+          - traefik.enable=true
+          - traefik.frontend=frontend
+          - traefik.docker.network=web
+          - traefik.http.middlewares.frontend-https-redirect.redirectscheme.scheme=https
+          - traefik.http.middlewares.frontend-https-redirect.redirectscheme.permanent=true
+          - traefik.http.routers.frontend.middlewares=frontend-https-redirect
+          - traefik.http.services.frontend.loadbalancer.server.port=5000
+          - "traefik.http.routers.frontend-secure.rule=Host(`YOURDOMAIN`)"
+          - "traefik.http.routers.frontend-secure.tls=true"
+          - "traefik.http.routers.frontend-secure.tls.certresolver=lets-encrypt"
+          - "traefik.http.routers.frontend-secure.service=frontend"
+          - traefik.port=5000
